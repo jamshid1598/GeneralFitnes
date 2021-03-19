@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Zoxidjon Ergashev" />
+
+        {% block css %}
+            
+        {% endblock css %}
+
+        {% block title %} {% endblock title %}
+
+    </head>
+    <body class="container-fluid pl-0 pr-0">
+    
+        <!-- navbar -->
+        {% include "includes/header.html" %} 
+        <!-- navbar -->
+
+        {% block content %}
+        
+        {% endblock content %}
+
+        <!-- footer -->
+        {% include 'includes/footer.html' %}
+        <!-- footer -->
+
+        <button class="btn backgroundRed colorBlack btn-top" title="ScrollTop">
+            <img src="{% static 'img/icons/up-arrow.svg' %}" width="20" height="30">
+        </button>
+
+        {% block js %}
+        
+        {% endblock js %}
+
+    </body>
+</html>
