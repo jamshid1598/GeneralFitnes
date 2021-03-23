@@ -23,13 +23,16 @@
 					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3" style="border: 1px solid #aaa;">
 						<h3 class="font-weight-bold pt-4">Котегория</h3>
 						<ul class="list-unstyled pt-3">
-							<li class="pl-2 pb-2 h5 font-weight-bold">Тренажеры</li>
+							{% for category in category_list %}
+								<li class="pl-2 pb-2 h5 font-weight-bold"><a href="{% url 'core:category' category.slug %}">{{ category.name }}</a></li>
+							{% endfor %}
+							<!-- <li class="pl-2 pb-2 h5 font-weight-bold">Тренажеры</li>
 							<li class="pl-2 pb-2 h5 font-weight-bold">Бренды</li>
 							<li class="pl-2 pb-2 h5 font-weight-bold">Все для тренировок</li>
 							<li class="pl-2 pb-2 h5 font-weight-bold">Виды спорта</li>
 							<li class="pl-2 pb-2 h5 font-weight-bold">Снаряжение</li>
 							<li class="pl-2 pb-2 h5 font-weight-bold">Одеждаи обувь</li>
-							<li class="pl-2 pb-2 h5 font-weight-bold">Аксессуарыи другие</li>
+							<li class="pl-2 pb-2 h5 font-weight-bold">Аксессуарыи другие</li> -->
 						</ul>
 					</div>
 					<div class="col-12 col-sm-12 col-md-6 col-lg-9 col-xl-9 p-5" style="background-image: url(/static/img/backfon2.jpg); background-size: cover;">
@@ -44,163 +47,33 @@
 				<h1 class="font-weight-bold pb-3">Популярные товары</h1>
 				<div class="row">
 
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="{% static 'img/Products/shooes/s1.png' %}" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
+					{% for object in object_list %}
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
+							<a href="{% url 'core:product-detail' object.slug %}">
+								<div class="card bg-transparent text-center">
+									{% if object.product_image.all %}
+										{% for img in object.product_image.all %}
+											{% if forloop.counter == 1 %}
+												<img src="{{ img.imageURL }}" width="60%" class="m-auto" alt="">
+											{% endif %}
+										{% endfor %}
+									{% endif %}
+									<div class="card-body">
+										<h6 class="textGrey">{{ object.name }}</h6>
+										<h6 class="textBlack">{{ object.product_model }}</h6>
+									</div>
 								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="{% static 'img/Products/shooes/s2.png' %}" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="{% static 'img/Products/shooes/s3.png' %}" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="{% static 'img/Products/shooes/s4.png' %}" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="img/Products/shooes/s5.png" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="img/Products/shooes/s6.png" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="img/Products/shooes/s7.png" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="img/Products/shooes/s8.png" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="img/Products/shooes/s9.png" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="img/Products/shooes/s10.png" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="img/Products/shooes/s11.png" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent text-center">
-								<img src="img/Products/shooes/s12.png" width="60%" class="m-auto" alt="">
-								<div class="card-body">
-									<h6 class="textGrey">Беговые дорожки</h6>
-									<h6 class="textBlack">GF-4050M</h6>
-								</div>
-							</div>
-						</a>
-					</div>
+							</a>
+						</div>
+					{% empty %}
+						<h1>There is no Products</h1>
+					{% endfor %}
 					
 				</div>
-				<div class="row pt-5">
-					<nav aria-label="Page navigation" class="text-center m-auto">
-						<ul class="pagination">
-							<li class="page-item">
-								<a class="page-link textBlack" href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-								</a>
-							</li>
-							<li class="page-item active "><a class="page-link bgRed" style="background-color: red; border: none;" href="#">1</a></li>
-							<li class="page-item"><a class="page-link textBlack" href="#">2</a></li>
-							<li class="page-item"><a class="page-link textBlack" href="#">3</a></li>
-							<li class="page-item"><a class="page-link textBlack" href="#">...</a></li>
-							<li class="page-item"><a class="page-link textBlack" href="#">12</a></li>
-							<li class="page-item">
-								<a class="page-link textBlack" href="#" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-									<span class="sr-only">Next</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
+				
+				<!-- Paginator -->
+				{% include 'includes/paginator.html' %}
+				<!-- End Paginator -->
 
 			</div>
 		</section>

@@ -74,13 +74,9 @@
 					<a class="navbar-brand" href="{% url 'core:home' %}"></a>
 					<div class="navbar-collapse text-center" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
-							<li class="nav-item pt-3"><a class="nav-link pl-3 pr-3 text-dark" href="index.html">Тренажеры</a></li>
-							<li class="nav-item pt-3"><a class="nav-link pl-3 pr-3 text-dark" href="index.html">Бренды</a></li>
-							<li class="nav-item pt-3"><a class="nav-link pl-3 pr-3 text-dark" href="index.html">Все для тренировок</a></li>
-							<li class="nav-item pt-3"><a class="nav-link pl-3 pr-3 text-dark" href="index.html">Виды спорта</a></li>
-							<li class="nav-item pt-3"><a class="nav-link pl-3 pr-3 text-dark" href="index.html">Снаряжение</a></li>
-							<li class="nav-item pt-3"><a class="nav-link pl-3 pr-3 text-dark" href="index.html">Одежда и обувь</a></li>
-							<li class="nav-item pt-3"><a class="nav-link pl-3 pr-3 text-dark" href="index.html">Аксессуары и другие</a></li> 
+							{% for object in category_list %}
+								<li class="nav-item pt-3"><a class="nav-link pl-3 pr-3 text-dark" href="{% url 'core:category' object.slug %}">{{ object.name }}</a></li>
+							{% endfor %}
 						</ul>  
 					</div>
 				</nav>
@@ -136,78 +132,23 @@
 			<div class="container pl-0 pr-0">
 				<h1 class="font-weight-bold p-3">Популярные товары</h1>
 				<div class="row p-3">
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent p-3">
-								<img src="{% static 'img/Products/top/t4.png' %}" width="100%" alt="">
-								<h6 class="pt-3 textBlack">Беговые дорожки</h6>
-								<h6 class="font-weight-bold textBlack">GF-4050M</h6>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent p-3">
-								<img src="{% static 'img/Products/top/t3.png' %}" width="100%" alt="">
-								<h6 class="pt-3 textBlack">Беговые дорожки</h6>
-								<h6 class="font-weight-bold textBlack">GF-4050M</h6>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent p-3">
-								<img src="{% static 'img/Products/top/t2.png' %}" width="100%" alt="">
-								<h6 class="pt-3 textBlack">Беговые дорожки</h6>
-								<h6 class="font-weight-bold textBlack">GF-4050M</h6>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent p-3">
-								<img src="{% static 'img/Products/top/t1.png' %}" width="100%" alt="">
-								<h6 class="pt-3 textBlack">Беговые дорожки</h6>
-								<h6 class="font-weight-bold textBlack">GF-4050M</h6>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent p-3">
-								<img src="{% static 'img/Products/trinajor/v1.png' %}" width="100%" alt="">
-								<h6 class="pt-3 textBlack">Беговые дорожки</h6>
-								<h6 class="font-weight-bold textBlack">GF-4050M</h6>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent p-3">
-								<img src="{% static 'img/Products/trinajor/v2.png' %}" width="100%" alt="">
-								<h6 class="pt-3 textBlack">Беговые дорожки</h6>
-								<h6 class="font-weight-bold textBlack">GF-4050M</h6>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent p-3">
-								<img src="{% static 'img/Products/trinajor/v3.png' %}" width="100%" alt="">
-								<h6 class="pt-3 textBlack">Беговые дорожки</h6>
-								<h6 class="font-weight-bold textBlack">GF-4050M</h6>
-							</div>
-						</a>
-					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
-							<div class="card bg-transparent p-3">
-								<img src="{% static 'img/Products/trinajor/v4.png' %}" width="100%" alt="">
-								<h6 class="pt-3 textBlack">Беговые дорожки</h6>
-								<h6 class="font-weight-bold textBlack">GF-4050M</h6>
-							</div>
-						</a>
-					</div>
+					{% for obj in recommended_product %}
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
+							<a href="{% url 'core:product-detail' obj.slug %}">
+								<div class="card bg-transparent p-3">
+									{% if obj.product_image.all %}
+										{% for img in obj.product_image.all %}
+											{% if forloop.counter == 1 %}
+												<img src="{{ img.imageURL }}" width="100%" alt="">
+											{% endif %}
+										{% endfor %}
+									{% endif %}
+									<h6 class="pt-3 textBlack">{{ obj.name }}</h6>
+									<h6 class="font-weight-bold textBlack">{{ obj.product_model }}</h6>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
 				</div>
 			</div>
 		</section> 

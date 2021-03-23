@@ -12,21 +12,24 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name    = 'Kategoriya'
+        verbose_name_plural = 'Kategoriyalar'
 
 
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='product_category')
 
-    name = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=300)
+    name = models.CharField(max_length=200,)
 
-    product_model = models.CharField(max_length=100)
+    product_model = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=300)
 
     description = models.TextField()
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name="Maxsulot"
         verbose_name_plural="Maxsulotlar"
@@ -39,5 +42,12 @@ class ProductImage(models.Model):
     caption = models.CharField(max_length=300)
 
     def __str__(self):
-        return self.pk
+        return str(self.pk)
     
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url

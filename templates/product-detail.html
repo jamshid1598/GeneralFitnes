@@ -1,310 +1,214 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>General Fitnes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Zoxidjon Ergashev" />
-  
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favi.png">
+{% extends 'base.html' %}
+{% load static %}
+	
+	{% block css %}
+		<link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favi.png' %}">
 
-  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" type="text/css" href="css/hexagons.css">
-  <link rel="stylesheet" type="text/css" href="css/slick.css">
-  <link rel="stylesheet" type="text/css" href="css/animate.css">
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <style type="text/css">
+		<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/hexagons.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<style type="text/css">
 
-    #myCarousel .list-inline {
-        white-space:nowrap;
-        overflow-x:auto;
-    }
-    
-    #myCarousel .carousel-indicators {
-        position: static;
-        left: initial;
-        width: initial;
-        margin-left: initial;
-        opacity:0.8;
-    }
-    
-    #myCarousel .carousel-indicators > li {
-        width: initial;
-        height: initial;
-        text-indent: initial;
-    }
-    
-    #myCarousel .carousel-indicators > li.active img {
-        opacity: 1;
-    }
-    
-      </style>
+			#myCarousel .list-inline {
+					white-space:nowrap;
+					overflow-x:auto;
+			}
+			
+			#myCarousel .carousel-indicators {
+					position: static;
+					left: initial;
+					width: initial;
+					margin-left: initial;
+					opacity:0.8;
+			}
+			
+			#myCarousel .carousel-indicators > li {
+					width: initial;
+					height: initial;
+					text-indent: initial;
+			}
+			
+			#myCarousel .carousel-indicators > li.active img {
+					opacity: 1;
+			}
+			
+		</style>
+	{% endblock css %}
 
-</head>
-<body class="container-fluid pl-0 pr-0">
+	{% block title %} <title> General Fitness </title> {% endblock title %}
 
-  <header class="container-fluid pl-0 pr-0 bg-white fixed-top">
-    <nav class="navbar navbar-expand-xl navbar-dark container pl-3 pr-3">
-      <a class="navbar-brand" href="index.html"><img src="img/logo.svg" width="220" alt=""></a>
-      <button class="navbar-toggler bgBlack" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-     </button>
-     <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
-       <ul class="navbar-nav m-auto">
-        <li class="nav-item pt-3">
-           <a class="nav-link pl-3 pr-3" href="index.html">
-             <div class="h5 text-dark font-weight-bold">Главная</div>
-           </a>
-         </li>
-         <li class="nav-item pt-3">
-          <a class="nav-link pl-3 pr-3" href="aboutus.html">
-            <div class="h5 text-dark font-weight-bold">О компании</div>
-          </a>
-         <li class="nav-item pt-3">
-           <a class="nav-link pl-3 pr-3" href="products.html">
-             <div class="h5 text-dark font-weight-bold">Каталог</div>
-           </a>
-         </li> 
-        </ul>
-        <form action="" class="form-inline pb-3 pt-3">
-          <h5 class="font-weight-bold text-center m-auto"><span class="h5"> +998 98 999 45 78</span> <br><span class="h5"> +998 98 999 45 78</span></h5>       
-        </form>
-       </div>
-     </nav>
-  </header>
+	{% block content %}
 
+		<section class="container pt100">
+			<div class="row pb-5">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-5 pl-0 pr-0">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb bgBlack">
+							<li class="breadcrumb-item"><a class="textWhite" href="#">Главная</a></li>
+							<li class="breadcrumb-item"><a class="textWhite" href="#">Каталог</a></li>
+							<li class="breadcrumb-item"><a class="textWhite" href="#">Беговая дорожка</a></li>
+							<li class="breadcrumb-item active" aria-current="page"><span class="text-white">GF - 4050M</span></li>
+						</ol>
+					</nav>
+				</div>
 
-<section class="container pt100">
-	<div class="row pb-5">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-5 pl-0 pr-0">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb bgBlack">
-          <li class="breadcrumb-item"><a class="textWhite" href="#">Главная</a></li>
-          <li class="breadcrumb-item"><a class="textWhite" href="#">Каталог</a></li>
-          <li class="breadcrumb-item"><a class="textWhite" href="#">Беговая дорожка</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><span class="text-white">GF - 4050M</span></li>
-        </ol>
-      </nav>
-    </div>
-   <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <div class="row">
-        <div class="col-lg-12" id="slider">
-            <div id="myCarousel" class="carousel slide shadow">
-                <div class="carousel-inner">
-                    <div class="active carousel-item" data-slide-number="0">
-                        <img src="img/Products/trinajor/v7.png" class="img-fluid" width="100%" style="height: 35vh;">
-                    </div>
-                    <div class="carousel-item" data-slide-number="1">
-                        <img src="img/Products/trinajor/v6.png" class="img-fluid" width="100%" style="height: 35vh;">
-                    </div>
-                    <div class="carousel-item" data-slide-number="2">
-                        <img src="img/Products/trinajor/v5.png" class="img-fluid" width="100%" style="height: 35vh;">
-                    </div>
-                </div>
-                <ul class="carousel-indicators list-inline mx-auto border">
-                    <li class="list-inline-item border p-0 m-0 active">
-                        <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#myCarousel">
-                            <img src="img/Products/trinajor/v7.png" class="img-fluid" style="width: 180px; height: 15vh;">
-                        </a>
-                    </li>
-                    <li class="list-inline-item border p-0 m-0">
-                        <a id="carousel-selector-1" data-slide-to="1" data-target="#myCarousel">
-                            <img src="img/Products/trinajor/v6.png" class="img-fluid" style="width: 180px; height: 15vh;">
-                        </a>
-                    </li>
-                    <li class="list-inline-item border p-0 m-0">
-                        <a id="carousel-selector-2" data-slide-to="2" data-target="#myCarousel">
-                            <img src="img/Products/trinajor/v5.png" class="img-fluid" style="width: 180px; height: 15vh;">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+	 			<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+					<div class="row">
+						<div class="col-lg-12" id="slider">
+							<div id="myCarousel" class="carousel slide shadow">
+								<div class="carousel-inner">
+									<div class="active carousel-item" data-slide-number="0">
+										<img src="{% static 'img/Products/trinajor/v7.png' %}" class="img-fluid" width="100%" style="height: 35vh;">
+									</div>
+									<div class="carousel-item" data-slide-number="1">
+										<img src="{% static 'img/Products/trinajor/v6.png' %}" class="img-fluid" width="100%" style="height: 35vh;">
+									</div>
+									<div class="carousel-item" data-slide-number="2">
+										<img src="{% static 'img/Products/trinajor/v5.png' %}" class="img-fluid" width="100%" style="height: 35vh;">
+									</div>
+								</div>
+								<ul class="carousel-indicators list-inline mx-auto border">
+									<li class="list-inline-item border p-0 m-0 active">
+										<a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#myCarousel">
+											<img src="{% static 'img/Products/trinajor/v7.png' %}" class="img-fluid" style="width: 180px; height: 15vh;">
+										</a>
+									</li>
+									<li class="list-inline-item border p-0 m-0">
+										<a id="carousel-selector-1" data-slide-to="1" data-target="#myCarousel">
+											<img src="{% static 'img/Products/trinajor/v6.png' %}" class="img-fluid" style="width: 180px; height: 15vh;">
+										</a>
+									</li>
+									<li class="list-inline-item border p-0 m-0">
+										<a id="carousel-selector-2" data-slide-to="2" data-target="#myCarousel">
+											<img src="{% static 'img/Products/trinajor/v5.png' %}" class="img-fluid" style="width: 180px; height: 15vh;">
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+					<p class="text-justify">
+						<h3>GF - 4050M</h3>
+						<h6><i class="fa fa-star textYellow"></i><i class="fa fa-star textYellow"></i><i class="fa fa-star textYellow"></i><i class="fa fa-star textYellow"></i><i class="fa fa-star textYellow"></i></h6>
+						<h5 class="textBlack font-weight-bold">Коротко о товаре</h5>
+						<h5>Гарантийный срок (месяц): 12</h5>
+						<h5>Модель: GF-4050</h5>
+						<h6 class="textGrey pt-4"><i class="fa fa-check" style="color:#00ff00;"></i> Доставка по Узбеистану</h6>
+					</p>
+				</div>
 
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-3 pr-3">
+					<div class="row">
+						<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 pr-4 pl-lg-0 pr-lg-0 pt-5">
+							<h3>Характеристики</h3>
+						</div>
+						<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 pr-4 pl-lg-0 pr-lg-0">
+							<div class="form-inline justify-content-between border">
+								<span class="p-2 m-0 w-50">Максимальный вес пользователя</span>
+								<span class="border-left p-2 m-0 w-50">110 кг</span>
+							</div>
+							<div class="form-inline justify-content-between border">
+								<span class="p-2 m-0 w-50">Двигатель</span>
+								<span class="border-left p-2 m-0 w-50">1,5 HP (DC)</span>
+							</div>
+							<div class="form-inline justify-content-between border">
+								<span class="p-2 m-0 w-50">Скорость движения бегового полотна</span>
+								<span class="border-left p-2 m-0 w-50">0.8-14.8 км/ч</span>
+							</div>
+							<div class="form-inline justify-content-between border">
+								<span class="p-2 m-0 w-50">Регулировка угла наклона</span>
+								<span class="border-left p-2 m-0 w-50">0-15% автоматическая</span>
+							</div>
+							<div class="form-inline justify-content-between border">
+								<span class="p-2 m-0 w-50">Размеры бегового полотна</span>
+								<span class="border-left p-2 m-0 w-50">1200х420</span>
+							</div>
+							<div class="form-inline justify-content-between border">
+								<span class="p-2 m-0 w-50">Условный проход Ду (мм)</span>
+								<span class="border-left p-2 m-0 w-50">LCD</span>
+							</div>
+							<div class="form-inline justify-content-between border ">
+								<span class=" p-2 m-0 w-50">Количество программ тренировки</span>
+								<span class="border-left p-2 m-0 w-50">10</span>
+							</div>
+							<div class="form-inline justify-content-between border ">
+								<span class=" p-2 m-0 w-50">Измерение пульса</span>
+								<span class="border-left p-2 m-0 w-50">Есть, крепление на ручке</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-  </div>
-  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-   <p class="text-justify">
-     <h3>GF - 4050M</h3>
-     <h6><i class="fa fa-star textYellow"></i><i class="fa fa-star textYellow"></i><i class="fa fa-star textYellow"></i><i class="fa fa-star textYellow"></i><i class="fa fa-star textYellow"></i></h6>
-     <h5 class="textBlack font-weight-bold">Коротко о товаре</h5>
-     <h5>Гарантийный срок (месяц): 12</h5>
-     <h5>Модель: GF-4050</h5>
-     <h6 class="textGrey pt-4"><i class="fa fa-check" style="color:#00ff00;"></i> Доставка по Узбеистану</h6>
-   </p>
- </div>
+		<section class="container-fluid p-3 p-lg-0 borderT">
+			<div class="container pl-0 pr-0">
+				<h3 class="font-weight-bold textBlack p-3">Рекомендуемые товары</h3>
+				<div class="row pt-2">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
+						<a href="product-detail.html">
+							<div class="card bg-transparent text-center">
+								<img src="{% static '' %}img/Products/trinajor/v8.png" width="60%" height="150" class="m-auto" alt="">
+								<div class="card-body">
+									<h6 class="textGrey">Беговые дорожки</h6>
+									<h6 class="textBlack">GF-4050M</h6>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
+						<a href="product-detail.html">
+							<div class="card bg-transparent text-center">
+								<img src="{% static '' %}img/Products/trinajor/v7.png" width="60%" height="150" class="m-auto" alt="">
+								<div class="card-body">
+									<h6 class="textGrey">Беговые дорожки</h6>
+									<h6 class="textBlack">GF-4050M</h6>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
+						<a href="product-detail.html">
+							<div class="card bg-transparent text-center">
+								<img src="{% static '' %}img/Products/trinajor/v6.png" height="150" width="60%" class="m-auto" alt="">
+								<div class="card-body">
+									<h6 class="textGrey">Беговые дорожки</h6>
+									<h6 class="textBlack">GF-4050M</h6>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
+						<a href="product-detail.html">
+							<div class="card bg-transparent text-center">
+								<img src="{% static '' %}img/Products/trinajor/v5.png" height="150" width="60%" class="m-auto" alt="">
+								<div class="card-body">
+									<h6 class="textGrey">Беговые дорожки</h6>
+									<h6 class="textBlack">GF-4050M</h6>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section> 
 
- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-3 pr-3">
-  <div class="row">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 pr-4 pl-lg-0 pr-lg-0 pt-5"><h3>Характеристики</h3></div>
+	{% endblock content %}
 
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 pr-4 pl-lg-0 pr-lg-0">
-      <div class="form-inline justify-content-between border">
-       <span class="p-2 m-0 w-50">Максимальный вес пользователя</span>
-       <span class="border-left p-2 m-0 w-50">110 кг</span>
-     </div>
+	{% block js %}
+		<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+		<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/slick.js' %}"></script>
+		<script defer src="{% static 'js/fontaweasome.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+		<script>
 
-     <div class="form-inline justify-content-between border">
-       <span class="p-2 m-0 w-50">Двигатель</span>
-       <span class="border-left p-2 m-0 w-50">1,5 HP (DC)</span>
-     </div>
-     <div class="form-inline justify-content-between border">
-       <span class="p-2 m-0 w-50">Скорость движения бегового полотна</span>
-       <span class="border-left p-2 m-0 w-50">0.8-14.8 км/ч</span>
-     </div>
-     <div class="form-inline justify-content-between border">
-       <span class="p-2 m-0 w-50">Регулировка угла наклона</span>
-       <span class="border-left p-2 m-0 w-50">0-15% автоматическая</span>
-     </div>
-     <div class="form-inline justify-content-between border">
-       <span class="p-2 m-0 w-50">Размеры бегового полотна</span>
-       <span class="border-left p-2 m-0 w-50">1200х420</span>
-     </div>
-     <div class="form-inline justify-content-between border">
-       <span class="p-2 m-0 w-50">Условный проход Ду (мм)</span>
-       <span class="border-left p-2 m-0 w-50">LCD</span>
-     </div>
-     <div class="form-inline justify-content-between border ">
-       <span class=" p-2 m-0 w-50">Количество программ тренировки</span>
-       <span class="border-left p-2 m-0 w-50">10</span>
-     </div>
-     <div class="form-inline justify-content-between border ">
-      <span class=" p-2 m-0 w-50">Измерение пульса</span>
-      <span class="border-left p-2 m-0 w-50">Есть, крепление на ручке</span>
-    </div>
-   </div>
- </div>
-</div>
-</div>
-</section>
-
-
-
-
-
-
-<section class="container-fluid p-3 p-lg-0 borderT">
-  <div class="container pl-0 pr-0">
-    <h3 class="font-weight-bold textBlack p-3">Рекомендуемые товары</h3>
-    <div class="row pt-2">
-      
-      <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-        <a href="product-detail.html">
-          <div class="card bg-transparent text-center">
-            <img src="img/Products/trinajor/v8.png" width="60%" height="150" class="m-auto" alt="">
-            <div class="card-body">
-              <h6 class="textGrey">Беговые дорожки</h6>
-              <h6 class="textBlack">GF-4050M</h6>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-        <a href="product-detail.html">
-          <div class="card bg-transparent text-center">
-            <img src="img/Products/trinajor/v7.png" width="60%" height="150" class="m-auto" alt="">
-            <div class="card-body">
-              <h6 class="textGrey">Беговые дорожки</h6>
-              <h6 class="textBlack">GF-4050M</h6>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-        <a href="product-detail.html">
-          <div class="card bg-transparent text-center">
-            <img src="img/Products/trinajor/v6.png" height="150" width="60%" class="m-auto" alt="">
-            <div class="card-body">
-              <h6 class="textGrey">Беговые дорожки</h6>
-              <h6 class="textBlack">GF-4050M</h6>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
-        <a href="product-detail.html">
-          <div class="card bg-transparent text-center">
-            <img src="img/Products/trinajor/v5.png" height="150" width="60%" class="m-auto" alt="">
-            <div class="card-body">
-              <h6 class="textGrey">Беговые дорожки</h6>
-              <h6 class="textBlack">GF-4050M</h6>
-            </div>
-          </div>
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section> 
-
-
-
-<footer class="container-fluid pl-0 pr-0 borderT pt-5 pb-3 bgBlack">
-  <div class="container pl-3 pr-3 pl-lg-0 pr-lg-0 pl-xl-0 pr-xl-0">
-    <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 pb-sm-5 text-center">
-          <img src="img/logo3.svg" width="100%" alt="footer-logo-img" >
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-          <ul class="list-unstyled text-center">
-              <li class="h5 textWhite font-weight-bold">Главная</li>
-              <li class="h5 textWhite font-weight-bold">О компании</li>
-              <li class="h5 textWhite font-weight-bold">Доставка и оплаты</li>
-            </ul>
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 text-center  text-lg-right text-xl-right">
-          <span class="pl-3"><i class="fab textWhite fa-2x fa-telegram"></i></span>
-          <span class="pl-3"><i class="fab textWhite fa-2x fa-instagram"></i></span>
-          <span class="pl-3"><i class="fab textWhite fa-2x fa-facebook"></i></span>
-          <span class="pl-3"><i class="fab textWhite fa-2x fa-youtube"></i></span><br>
-          <h5 class="pt-3 textWhite font-weight-bold">Telefon: +998 99 010 90 90 <br> +998 71 209 90 90</h5>
-          <h5 class="pt-3 textWhite font-weight-bold">E-mail: info@generalfitnes.uz</h5>
-          <h4>
-            <a class="nav-link" href="contact.html">
-              <SCRIPT language="javascript" type="text/javascript">
-                top_js="1.0";top_r="id=45352&r="+escape(document.referrer)+"&pg="+escape(window.location.href);document.cookie="smart_top=1; path=/"; top_r+="&c="+(document.cookie?"Y":"N")
-              </SCRIPT>
-              <SCRIPT language="javascript1.1" type="text/javascript">
-                top_js="1.1";top_r+="&j="+(navigator.javaEnabled()?"Y":"N")
-              </SCRIPT>
-              <SCRIPT language="javascript1.2" type="text/javascript">
-                top_js="1.2";top_r+="&wh="+screen.width+'x'+screen.height+"&px="+
-                (((navigator.appName.substring(0,3)=="Mic"))?screen.colorDepth:screen.pixelDepth)
-              </SCRIPT>
-              <SCRIPT language="javascript1.3" type="text/javascript">top_js="1.3";</SCRIPT>
-
-              <SCRIPT language="JavaScript" type="text/javascript">
-                top_rat="&col=FFFFFF&t=000000&p=FF0000";top_r+="&js="+top_js+"";
-                document.write('<a href="http://www.uz/ru/res/visitor/index?id=45352" target=_top><img src="http://cnt0.www.uz/counter/collect?'+top_r+top_rat+'" width=88 height=31 border=0 alt="Топ рейтинг www.uz"></a>')//-->
-              </SCRIPT>
-              <NOSCRIPT>
-                <A href="http://www.uz/ru/res/visitor/index?id=45352" target=_top>
-                <IMG height=31 src="http://cnt0.www.uz/counter/collect?id=45352&pg=http%3A//uzinfocom.uz&&col=FFFFFF&amp;t=000000&amp;p=FF0000" alt="Топ рейтинг www.uz">
-                </A>
-              </NOSCRIPT>          
-          </h4>
-        </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-5 text-center text-lg-left text-xl-left"><small class="text-secondary">© 2020 MyWeb.uz. Все права защищены</small></div>
-    </div>
-  </div>
-</footer> 
-
-<button class="btn backgroundRed colorBlack btn-top" title="ScrollTop"><img src="img/icons/up-arrow.svg" width="20" height="30"></button>
-
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.bundle.js"></script>
-<script type="text/javascript" src="js/slick.js"></script>
-<script defer src="js/fontaweasome.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script>
-
-</script>
-</body>
-</html>
+		</script>
+	{% endblock js %}
