@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     
     # 3rd party apps
     'tinymce',
+    'phonenumbers',
 
     # local apps
     'core.apps.CoreConfig',
@@ -172,3 +173,11 @@ ACCOUNT_USERNAME_BLACKLIST = ['administrator', 'help',
                               'admin', 'webmaster',
                               'areariservata', 'blog'
                               '@', 'master']
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'general.fitness.9090@gmail.com'
+EMAIL_HOST_PASSWORD = 'avpgckvdajfyzucf'
