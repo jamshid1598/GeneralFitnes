@@ -1,1 +1,3 @@
 trinajor/
+media_root/
+*.sqlite3
