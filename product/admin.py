@@ -22,7 +22,7 @@ class CategoryAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Category Info', {
             "fields": (
-                'name', 'slug', 
+                'name', 'slug', 'image', 'caption',
             ),
         }),
     )    
@@ -38,11 +38,11 @@ class ProductImageAdmin(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageAdmin,]
 
-    list_display       = ('pk', 'category', 'name', 'product_model', 'slug', )
+    list_display       = ('pk', 'category', 'name', 'product_model', 'slug', 'guarentee', 'delivery_uzb', 'delivery_toshkent')
     list_display_links = ('pk', 'name',)
-    list_editable      = ('category', 'slug', 'product_model',)
-    search_fields      = ('category', 'name', 'slug', 'product_model',)
-    ordering           = ('pk', 'category', 'name', 'slug', 'product_model',)
+    list_editable      = ('category', 'slug', 'product_model', 'guarentee', 'delivery_uzb', 'delivery_toshkent')
+    search_fields      = ('category', 'name', 'slug', 'product_model', 'guarentee', 'delivery_uzb', 'delivery_toshkent')
+    ordering           = ('pk', 'category', 'name', 'slug', 'product_model', 'guarentee', 'delivery_uzb', 'delivery_toshkent')
 
     prepopulated_fields = {'slug' : ('product_model',)}
 
@@ -54,7 +54,7 @@ class ProductAdmin(admin.ModelAdmin):
         }),
         ('Proruct Info', {
             "fields": (
-                'name', 'product_model', 'slug', 'description',
+                'name', 'product_model', 'slug', 'description', 'guarentee', 'delivery_uzb', 'delivery_toshkent'
             ),
         }),
     )
