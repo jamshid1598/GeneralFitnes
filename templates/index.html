@@ -241,10 +241,21 @@
 					</div>
 					<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 						<h1>Оставьте заявку и мы свяжемся с вами !</h1>
-						<form action="" class="form-group">
-							<input type="text" class="form-control mt-2" placeholder="Введите ваше имя ...">
+						<form action="" method="POST" class="form-group">
+							{% csrf_token %}
+							{{ form.non_field_errors }}
+
+							{{ form.name.errors }}
+							{{ form.name }}
+
+							{{ form.phone_number.errors }}
+							{{ form.phone_number }}
+
+							{{ form.message.errors }}
+							{{ form.message }}
+							<!-- <input type="text" class="form-control mt-2" placeholder="Введите ваше имя ...">
 							<input type="number" min="1" class="form-control mt-2 mb-2" placeholder="Введите свой телефон ...">
-							<textarea name="" id="" class="p-3" style="width: 100%;" placeholder="Сообщение..." rows="7"></textarea>
+							<textarea name="" id="" class="p-3" style="width: 100%;" placeholder="Сообщение..." rows="7"></textarea> -->
 							<h5 class="text-right">
 								<button class="btn pl-5 pr-5 textBlack" style="border: 2px solid #ddd;">Send</button>
 							</h5>

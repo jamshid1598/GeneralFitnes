@@ -19,6 +19,10 @@
         {% include "includes/header.html" %} 
         <!-- navbar -->
 
+        <!-- messages -->
+        {% include 'includes/messages.html' %}
+        <!-- messages -->
+
         {% block content %}
         
         {% endblock content %}
@@ -34,6 +38,8 @@
         {% block js %}
         
         {% endblock js %}
-
+        <script>
+			event.preventDefault()
+		</script>
     </body>
 </html>
