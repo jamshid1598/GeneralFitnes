@@ -17,7 +17,14 @@ from product.models import (
 	Product,
 	ProductImage,
 )
+from .models import (
+	HomePicture,
+	About,
+	FeedBack,
+)
 from .forms import CantactForm
+
+
 # Create your views here.
 
 
@@ -26,16 +33,26 @@ class HomeView(View):
 	context = {}
 
 	def get(self, request, *args, **kwargs):
+		
+		# Cantact form
 		form = CantactForm()
-
 		self.context['form'] = form
 		self.context['category_list'] = Category.objects.all()
+		# Cantact form
+
+		# Recommendent prodcts
 		product_list = Product.objects.all()
 		if len(product_list) > 7:
 			self.context['recommended_product'] = product_list[:8]
 		else:
 			self.context['recommended_product'] = product_list
+		# Recommendent prodcts
 
+		# Home data
+		self.context['home_obj'] = HomePicture.objects.latest('pk')
+		self.context['about_obj'] = About.objects.latest('pk')
+		# Main data
+		
 		return render(
 			request, 
 			self.template_name, 
@@ -43,12 +60,14 @@ class HomeView(View):
 		)
 
 	def post(self, request, *args, **kwargs):
+		# Cantact form
 		form=CantactForm(request.POST)
 		if form.is_valid():
 			name = form.cleaned_data.get('name')
 			phone_number = form.cleaned_data.get('phone_number')
 			message = form.cleaned_data.get('message')
-
+			
+			# send email to admin
 			try:
 				subject = 'General Fitness'
 				message = f"Ismi: {name}\ntel: {phone_number}\n"+message
@@ -58,17 +77,29 @@ class HomeView(View):
 				messages.success(request, f"Dear {name}, your message succesfully send to admins")
 			except Exception as e:
 				message.error(request, f"smth went wrong, please check and try again :)", e)
+			# print(name, phone_number, message)
+			# send email to admin
+
 			form = CantactForm()
-
-			print(name, phone_number, message)
+		else:
+			messages.error(request, f"Xatolik ro\'y berdi, iltimos tekshirib qaytadan urinib kuring :)")
+			
 		self.context['form'] = form
+		# Cantact form
 
+		# Recommendent product
 		self.context['category'] = Category.objects.all()
 		product_list = Product.objects.all()
 		if len(product_list) > 7:
 			self.context['recommended_product'] = product_list[:8]
 		else:
 			self.context['recommended_product'] = product_list
+		# Recommendent product
+
+		# Home data
+		self.context['home_obj'] = HomePicture.objects.latest('pk')
+		self.context['about_obj'] = About.objects.latest('pk')
+		# Main data
 
 		return render(
 			request,
@@ -107,9 +138,10 @@ class ProductDetailView(DetailView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super().get_context_data(*args, **kwargs)
-		product_list = Product.objects.filter(category=self.object.category)
-		if len(product_list) > 7:
-			context['recommended_product'] = product_list[:8]
+		product_list = [product for product in Product.objects.filter(category=self.object.category) if not product.pk == self.object.pk ]
+		
+		if len(product_list) > 3:
+			context['recommended_product'] = product_list[:4]
 		else:
 			context['recommended_product'] = product_list
 		return context

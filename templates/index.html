@@ -2,7 +2,7 @@
 {% load static %}
 	
 	{% block css %}
-		<link rel="icon" type="image/png" sizes="32x32" href="{% static '' %}img/favi.png">
+		<!-- <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favi.png' %}"> -->
 
 		<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.css' %}">
@@ -17,13 +17,18 @@
 
 	{% block content %}
 
-		<section class="container-fluid p-3 p-lg-0 px-lg-0" style="background-image: url('/static/img/backfon.jpg'); background-size: cover; height: 80vh;">
+		{% if home_obj.imageURL == '' %}
+			<section class="container-fluid p-3 p-lg-0 px-lg-0" style="background-image: url('/static/img/backfon.jpg'); background-size: cover; height: 80vh;">
+		{% else %}
+			<section class="container-fluid p-3 p-lg-0 px-lg-0" style="background-image: url('{{ home_obj.imageURL }}'); background-size: cover; height: 80vh;">
+		{% endif %}
 			<div class="container pt-5 pb-5 pl-0 pr-0">
 				<div class="row pt-5 pb-5">
 					<div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-6 p-5">
-						<h1 class="pt-5 font-weight-bold text-uppercase">sportdan yaxshiroq <br> xobbi yo’q!</h1>
-							<h5 class="pt-3 pb-3 text-justify">O’zingiz uchun foydali xobbiga ega bo’ling</h5>
-							<button class="btn textWhite bgRed pl-5 pr-5">Узнать больше</button>
+						<h1 class="pt-5 font-weight-bold text-uppercase">{{ home_obj.caption|default_if_none:'SPORTDAN YAXSHIROQ XOBBI YUQ!' }}</h1>
+						<!-- <h1 class="pt-5 font-weight-bold text-uppercase">sportdan yaxshiroq <br> xobbi yo’q!</h1> -->
+						<h5 class="pt-3 pb-3 text-justify">O’zingiz uchun foydali xobbiga ega bo’ling</h5>
+						<button class="btn textWhite bgRed pl-5 pr-5">Узнать больше</button>
 					</div>
 				</div>
 			</div>
@@ -33,7 +38,7 @@
 			<div class="container pl-0 pr-0">
 				<div class="row pt-5">      
 					<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
+						<a href="#">
 							<div class="card border-0 text-center bg-transparent">
 								<img src="{% static 'img/newIcons/icon1.png' %}" width="80" class="m-auto p-3" alt="header-icon1" style="background-color: red; border-radius:10px;">
 								<h6 class="font-weight-bold textBlack text-uppercase pt-3">безопасность</h6>
@@ -41,7 +46,7 @@
 						</a>
 					</div>
 					<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
+						<a href="#">
 							<div class="card border-0 text-center bg-transparent">
 								<img src="{% static 'img/newIcons/icon2.png' %}" width="80" class="m-auto p-3" alt="header-icon2" style="background-color: red; border-radius:10px;">
 								<h6 class="font-weight-bold textBlack text-uppercase pt-3">ДОСТАВКА ПО УЗБЕКИТСАНУ</h6>
@@ -49,7 +54,7 @@
 						</a>
 					</div>
 					<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
+						<a href="#">
 							<div class="card border-0 text-center bg-transparent">
 								<img src="{% static 'img/newIcons/icon3.png' %}" width="80" class="m-auto p-3" alt="header-icon3" style="background-color: red; border-radius:10px;">
 								<h6 class="font-weight-bold textBlack text-uppercase pt-3">УСТАНОВКА</h6>
@@ -57,7 +62,7 @@
 						</a>
 					</div>
 					<div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
-						<a href="product-detail.html">
+						<a href="#">
 							<div class="card border-0 text-center bg-transparent">
 								<img src="{% static 'img/newIcons/icon4.png' %}" width="80" class="m-auto p-3" alt="header-icon4" style="background-color: red; border-radius:10px;">
 								<h6 class="font-weight-bold textBlack text-uppercase pt-3">техническое обслуживание</h6>
@@ -119,12 +124,24 @@
 
 		<section class="container p-3" id="brands">
 			<div class="row p-3">
-				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 "><img src="{% static 'img/clients/adidas.png' %}" width="100%" alt=""></div>
-				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 pt-4"><img src="{% static 'img/logo.svg' %}" width="100%" alt=""></div>
-				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 pt-3"><img src="{% static 'img/clients/nike.png' %}" width="100%" alt=""></div>
-				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 pt-3"><img src="{% static 'img/clients/oasics.png' %}" width="100%" alt=""></div>
-				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 "><img src="{% static 'img/clients/puma.png' %}" width="100%" alt=""></div>
-				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 "><img src="{% static 'img/clients/under.png' %}" width="100%" alt=""></div>
+				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 ">
+					<img src="{% static 'img/clients/adidas.png' %}" width="100%" alt="">
+				</div>
+				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 pt-4">
+					<img src="{% static 'img/logo.svg' %}" width="100%" alt="">
+				</div>
+				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 pt-3">
+					<img src="{% static 'img/clients/nike.png' %}" width="100%" alt="">
+				</div>
+				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 pt-3">
+					<img src="{% static 'img/clients/oasics.png' %}" width="100%" alt="">
+				</div>
+				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 ">
+					<img src="{% static 'img/clients/puma.png' %}" width="100%" alt="">
+				</div>
+				<div class="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 ">
+					<img src="{% static 'img/clients/under.png' %}" width="100%" alt="">
+				</div>
 			</div>  
 		</section> 
 
@@ -157,15 +174,16 @@
 			<div class="container pl-0 pr-0">
 				<div class="row">
 					<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 pt-5 pb-5">
-						<img src="{% static 'img/back.jpg' %}" width="100%" height="" style="height: 48vh;" alt="">
+						{% if about_obj.imageURL == '' %}
+							<img src="{% static 'img/back.jpg' %}" width="100%" height="" style="height: 48vh;" alt="">
+						{% else %}
+							<img src="{{ about_obj.imageURL }}" width="100%" height="" style="height: 48vh;" alt="">
+						{% endif %}
 					</div>
 					<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 p-4">
 						<h1 class="font-weight-bold pt-4">О компании</h1>
 						<h5 class="text-justify">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, vero adipisci necessitatibus ipsa quisquam quas pariatur, officiis voluptates laborum, corporis magni? Rem tempore recusandae vel itaque sapiente accusamus modi et!
-							Lorem ipsum dolor amet consectetur adipisicing elit. Odio, vero adipisci necessitatibus ipsa quisquam quas pariatur, officiis voluptates laborum, corporis magni? Rem tempore recusandae vel itaque sapiente accusamus modi et!
-							Lorem ipsum consectetur adipisicing elit. Odio, vero adipisci necessitatibus ipsa quisquam quas pariatur, officiis voluptates laborum, corporis magni? Rem tempore recusandae vel itaque sapiente accusamus modi
-							Odio, vero adipisci necessitatibus ipsa quisquam quas pariatur, officiis voluptates laborum, corporis magni? Rem tempore recusandae vel itaque sapiente accusamus modi et!
+							{{ about_obj.about_text|safe|default_if_none:'General Fitness' }}
 						</h5>
 					</div>
 				</div>
