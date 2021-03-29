@@ -69,16 +69,20 @@ class HomeView(View):
 		if form.is_valid():
 			name = form.cleaned_data.get('name')
 			phone_number = form.cleaned_data.get('phone_number')
-			message = form.cleaned_data.get('message')
+			klient_message = form.cleaned_data.get('message')
 			
 			# send email to admin
 			try:
 				subject = 'General Fitness'
-				message = f"Ismi: {name}\ntel: {phone_number}\n"+message
+				message = f"Ismi: {name}\ntel: {phone_number}\n"+klient_message
 				email_from = settings.EMAIL_HOST_USER
 				recipient_list = ['dovurovjamshid95@gmail.com',]    
 				send_mail( subject, message, email_from, recipient_list )
 				messages.success(request, f"Dear {name}, your message succesfully send to admins")
+
+				new_feedback = FeedBack.objects.create(name=name, phonenumber=phone_number, message=klient_message)
+				new_feedback.save()
+
 			except Exception as e:
 				message.error(request, f"smth went wrong, please check and try again :)", e)
 			# print(name, phone_number, message)

@@ -49,7 +49,7 @@ admin.site.register(About, AboutAdmin)
 
 
 class FeedBackAdmin(admin.ModelAdmin):
-    list_display=('pk', 'name', 'phonenumber',)
+    list_display=('pk', 'name', 'phonenumber', 'message')
     list_display_links=('pk', 'name', 'phonenumber',)
     # list_editable=()
     search_fields=('pk', 'name', 'phonenumber',)
