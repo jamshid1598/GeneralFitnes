@@ -11,9 +11,9 @@ from .models import (
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display       = ('name', 'slug', )
+    list_display       = ('name', 'slug', 'image', 'caption')
     list_display_links = ('name',)
-    list_editable      = ('slug', )
+    list_editable      = ('slug', 'image', 'caption',)
     search_fields      = ('name', 'slug', )
     ordering           = ('name', 'slug', )
 

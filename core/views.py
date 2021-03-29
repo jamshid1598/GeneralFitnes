@@ -49,8 +49,12 @@ class HomeView(View):
 		# Recommendent prodcts
 
 		# Home data
-		self.context['home_obj'] = HomePicture.objects.latest('pk')
-		self.context['about_obj'] = About.objects.latest('pk')
+		try:
+			self.context['home_obj']  = HomePicture.objects.get(active=True)
+			self.context['about_obj'] = About.objects.get(active=True)
+		except:
+			self.context['home_obj']  = None
+			self.context['about_obj'] = None
 		# Main data
 		
 		return render(
@@ -89,11 +93,8 @@ class HomeView(View):
 
 		# Recommendent product
 		self.context['category'] = Category.objects.all()
-		product_list = Product.objects.all()
-		if len(product_list) > 7:
-			self.context['recommended_product'] = product_list[:8]
-		else:
-			self.context['recommended_product'] = product_list
+		product_list = Product.objects.all()[:8]
+		self.context['recommended_product'] = product_list
 		# Recommendent product
 
 		# Home data
@@ -126,6 +127,11 @@ class CategoryView(ListView):
 	def get_context_data(self, *args, **kwargs):
 		context = super().get_context_data(*args, **kwargs)
 		context['category_list'] = Category.objects.all()
+		try:
+			slug=self.kwargs.get('slug')
+			context['category'] = Category.objects.get(slug=slug)
+		except:
+			context['category'] = None
 		return context
 	
 

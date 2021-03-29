@@ -6,7 +6,9 @@ from django.db import models
 class HomePicture(models.Model):
     image   = models.ImageField(upload_to='home-image/', blank=True, null=True, verbose_name="Assosiy rasm")
     caption = models.CharField(max_length=400, blank=True, null=True, verbose_name="Rasm teksti")
-    
+
+    active = models.BooleanField(default=False, verbose_name='Aktiv Rasm')
+
     def __str__(self):
         return str(self.pk)
     class Meta:
@@ -27,6 +29,8 @@ class About(models.Model):
     caption    = models.CharField(max_length=300, blank=True, null=True, verbose_name="Rasm teksti")
     about_text = models.TextField(verbose_name="Malumot")
 
+    active = models.BooleanField(default=False, verbose_name='Aktiv')
+
     def __str__(self):
         return str(self.pk)
 
@@ -42,9 +46,9 @@ class About(models.Model):
         verbose_name_plural="Kampaniya Haqida"
 
 class FeedBack(models.Model):
-    name        = models.CharField(max_length=255, blank=True, null=True)
-    phonenumber = models.CharField(max_length=14, blank=True, null=True)
-    message     = models.TextField(blank=True, null=True)
+    name        = models.CharField(max_length=255, blank=True, null=True, verbose_name='Mijoz Ismi')
+    phonenumber = models.CharField(max_length=14, blank=True, null=True, verbose_name='Telefon Raqami')
+    message     = models.TextField(blank=True, null=True, verbose_name='Habar')
 
     def __str__(self):
         return f"{self.name} | {self.phonenumber}"

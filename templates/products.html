@@ -28,9 +28,15 @@
 							{% endfor %}
 						</ul>
 					</div>
-					<div class="col-12 col-sm-12 col-md-6 col-lg-9 col-xl-9 p-5" style="background-image: url(/static/img/backfon2.jpg); background-size: cover;">
-						<h1 class="textWhite">«Фитнес - это игра ошибок. Побеждает тот, кто делает меньше ошибок» </h1>
-					</div>
+					{% if category %}
+						<div class="col-12 col-sm-12 col-md-6 col-lg-9 col-xl-9 p-5" style="{% if category.imageURL == '' %}background-image: url('/static/img/backfon2.jpg'); {% else %} background-image: url('{{ category.imageURL }}'); {% endif %} background-size: cover;">
+							<h1 class="textWhite">{{ category.caption|safe|default_if_none:"«Фитнес - это игра ошибок. Побеждает тот, кто делает меньше ошибок»" }} </h1>
+						</div>
+					{% else %}
+						<div class="col-12 col-sm-12 col-md-6 col-lg-9 col-xl-9 p-5" style="background-image: url(/static/img/backfon2.jpg); background-size: cover;">
+							<h1 class="textWhite">«Фитнес - это игра ошибок. Побеждает тот, кто делает меньше ошибок» </h1>
+						</div>
+					{% endif %}
 				</div>
 			</div>
 		</section>

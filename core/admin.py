@@ -11,11 +11,11 @@ from .models import (
 # Register your models here.
 
 class HomePctureAdmin(admin.ModelAdmin):
-    list_display       = ('pk', 'image', 'caption',)
+    list_display       = ('pk', 'image', 'caption', 'active',)
     list_display_links = ('pk',)
     search_fields      = ('pk', 'image', 'caption')
-    list_editable      = ('image', 'caption',)
-    ordering           = ('pk', 'caption')
+    list_editable      = ('image', 'caption', 'active',)
+    ordering           = ('pk', 'caption', 'active',)
 
     fieldsets=(
         ('Assosiy rasm', {
@@ -28,11 +28,11 @@ admin.site.register(HomePicture, HomePctureAdmin)
 
 
 class AboutAdmin(admin.ModelAdmin):
-    list_display=('pk', 'image', 'caption', 'about_text')
+    list_display=('pk', 'image', 'caption', 'active', 'about_text')
     list_display_links=('pk',)
-    list_editable=('image', 'caption', 'about_text')
+    list_editable=('image', 'caption', 'active', 'about_text')
     search_fields=('pk', 'image', 'caption',)
-    ordering=('pk', 'image', 'caption',)
+    ordering=('pk', 'image', 'caption', 'active',)
 
     fieldsets = (
         ('Firma yoki korxona haqida ma\'lumot', {
